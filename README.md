@@ -1,6 +1,7 @@
-# getconnect
+# Simple Project Getx CRUD Flutter
 
 A new Flutter project.
+this Project using Flutter framework with Getx clean architecture GetCLI
 
 ## Getting Started
 
