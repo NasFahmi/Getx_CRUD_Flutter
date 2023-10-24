@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getconnect/app/routes/app_pages.dart';
 import '../controllers/detail_controller.dart';
 
 class DetailView extends GetView<DetailController> {
@@ -25,6 +26,24 @@ class DetailView extends GetView<DetailController> {
                 Text('Nim = ${controller.mahasiswaData.value.nim}'),
                 Text(
                     'Phone Number = ${controller.mahasiswaData.value.phoneNumber}'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        controller.deleteSingleData();
+                      },
+                      child: Text('Delete'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Get.toNamed(Routes.EDIT_USER,
+                            arguments: controller.mahasiswaData);
+                      },
+                      child: Text('Edit User'),
+                    ),
+                  ],
+                )
               ],
             ),
           ),

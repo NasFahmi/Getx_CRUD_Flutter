@@ -20,6 +20,7 @@ class DetailController extends GetxController {
     argument = Get.arguments;
     print(argument);
     fetchSingleData(argument);
+    deleteSumbit();
   }
 
   @override
@@ -50,5 +51,22 @@ class DetailController extends GetxController {
     } catch (e) {
       return Future.error(e);
     }
+  }
+
+  Future deleteSingleData() async {
+    try {
+      final response =
+          await mahasiswaProvider.deleteData(mahasiswaData.value.id);
+      if (response.isOk) {
+        print('succes delete data');
+        Get.back();
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  void deleteSumbit() {
+    deleteSingleData();
   }
 }

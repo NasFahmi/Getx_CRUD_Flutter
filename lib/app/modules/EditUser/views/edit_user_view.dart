@@ -20,37 +20,64 @@ class EditUserView extends GetView<EditUserController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'First Name',
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 4,
                 ),
-                _TextFIeld('First Name'),
-                SizedBox(
+                _TextFIeld(
+                    hint: 'Firstname',
+                    textController: controller.firstNameController),
+                const SizedBox(
                   height: 8,
                 ),
-                Text('Last Name'),
-                SizedBox(
+                const Text('Last Name'),
+                const SizedBox(
                   height: 4,
                 ),
-                _TextFIeld('Last Name'),
-                SizedBox(
+                _TextFIeld(
+                    hint: 'Last Name',
+                    textController: controller.lastNameController),
+                const SizedBox(
                   height: 8,
                 ),
-                Text('Email'),
-                SizedBox(
+                const Text('Email'),
+                const SizedBox(
                   height: 4,
                 ),
-                _TextFIeld('Email'),
-                SizedBox(
+                _TextFIeld(
+                    hint: 'Email', textController: controller.emailController),
+                const Text('Address'),
+                const SizedBox(
+                  height: 4,
+                ),
+                _TextFIeld(
+                    hint: 'Address',
+                    textController: controller.addressController),
+                const Text('Phone Number'),
+                const SizedBox(
+                  height: 4,
+                ),
+                _TextFIeld(
+                    hint: 'Phone Number',
+                    textController: controller.phoneNumberController),
+                const Text('Nim'),
+                const SizedBox(
+                  height: 4,
+                ),
+                _TextFIeld(
+                    hint: 'Nim', textController: controller.nimController),
+                const SizedBox(
                   height: 16,
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       minimumSize: Size(Get.width, 48)),
-                  onPressed: () {},
-                  child: Text('Submit Edit'),
+                  onPressed: () {
+                    controller.updateSingleData();
+                  },
+                  child: const Text('Edit User'),
                 )
               ],
             ),
@@ -60,8 +87,9 @@ class EditUserView extends GetView<EditUserController> {
     );
   }
 
-  TextField _TextFIeld(String hint) {
+  TextField _TextFIeld({String? hint, TextEditingController? textController}) {
     return TextField(
+      controller: textController,
       decoration: InputDecoration(
         hintText: hint,
         enabledBorder: OutlineInputBorder(
